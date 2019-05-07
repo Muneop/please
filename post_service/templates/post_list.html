@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <thread>
+            <tr>
+                <th>제목</th>
+                <th>작성</th>
+            </tr>
+        </thread>
+
+        <tbody>
+         {% for post in post_list %}
+             <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.author }}</td>
+             </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% for page in total_page %}
+        {% if current_page != page %}
+            <a href="?page={{ page }}" rel = "nofollow">
+        {% else %}
+            <a> {%endif%} <span  style = "font-weight: bold">{{ page }}</span></a>
+    {% endfor %}
+</body>
+</html>
+

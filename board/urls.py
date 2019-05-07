@@ -17,13 +17,16 @@ from django.conf.urls import url, include
 from django.contrib import admin
 #from django.urls import path
 from rest_framework_swagger.views import get_swagger_view
-from blog.views import blog_page, blog_api
+from blog.views import blog_page, blog_api, enemyTest, EnemyAbility
+from post_service.views import post_list
+import post_service
 
 '''
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 '''
+
 schema_view = get_swagger_view(title='Pastenbin API')
 
 urlpatterns = [
@@ -31,9 +34,16 @@ urlpatterns = [
     url(r'^rest-swagger/', schema_view),
     url('admin/', admin.site.urls),
 
+
     #blog page
     url(r'^blog/', blog_page),
 
+    # post_service page
+    url(r'^post_service/', post_list),
     #rest
     url(r'^api/blog/', blog_api.as_view()),
+
+    #test_db에서 데이터 가져오기
+    #url(r'^blog/(?P<tag>\d+)', 'blog.views.EnemyAbility'),
+
 ]
